@@ -64,7 +64,8 @@ def main():
     image = generate_avatar(image, GAP_OUT, BLOCK_SIZE, BLOCK_QUANTITY, scheme, color)
 
     root_path = Path(__file__).parent.parent.absolute()  # Work directory
-    os.mkdir(root_path / AVATAR_PATH)
+    if not os.path.exists(root_path / AVATAR_PATH):
+        os.mkdir(root_path / AVATAR_PATH)
 
     avatar_quantity = len(os.listdir(root_path / AVATAR_PATH))  # Number of avatars
     avatar_photo = f'avatar_{avatar_quantity + 1}.png'  # Photo name
